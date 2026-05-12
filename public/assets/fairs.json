@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Fira de l'Oli",
+    "town": "Les Borges Blanques",
+    "region": "Les Garrigues",
+    "date": "2024-01-19",
+    "product": "Oli d'oliva"
+  },
+  {
+    "name": "Fira de la Candelera",
+    "town": "Molins de Rei",
+    "region": "Baix Llobregat",
+    "date": "2024-02-02",
+    "product": "Plantes i flors"
+  },
+  {
+    "name": "Fira de l'Aixada",
+    "town": "Manresa",
+    "region": "Bages",
+    "date": "2024-02-24",
+    "product": "Artesania medieval"
+  },
+  {
+    "name": "Fira de l'Embotit",
+    "town": "Bescanó",
+    "region": "Gironès",
+    "date": "2024-03-03",
+    "product": "Embotits"
+  },
+  {
+    "name": "Fira de l'Arbre i la Natura",
+    "town": "Mataró",
+    "region": "Maresme",
+    "date": "2024-03-09",
+    "product": "Plantes i productes naturals"
+  },
+  {
+    "name": "Fira de la Mel",
+    "town": "El Perelló",
+    "region": "Baix Ebre",
+    "date": "2024-04-27",
+    "product": "Mel"
+  },
+  {
+    "name": "Fira de Sant Ponç",
+    "town": "Barcelona",
+    "region": "Barcelonès",
+    "date": "2024-05-11",
+    "product": "Herbes remeieres i mel"
+  },
+  {
+    "name": "Fira del Pa",
+    "town": "Cervera",
+    "region": "Segarra",
+    "date": "2024-05-18",
+    "product": "Pa artesà"
+  },
+  {
+    "name": "Fira de la Cirera",
+    "town": "Miravet",
+    "region": "Ribera d'Ebre",
+    "date": "2024-06-01",
+    "product": "Cireres"
+  },
+  {
+    "name": "Fira de les Herbes Remeieres",
+    "town": "Vilanova de Sau",
+    "region": "Osona",
+    "date": "2024-06-08",
+    "product": "Herbes remeieres"
+  },
+  {
+    "name": "Fira del Pescador",
+    "town": "Palamós",
+    "region": "Baix Empordà",
+    "date": "2024-06-15",
+    "product": "Peix i marisc"
+  },
+  {
+    "name": "Fira de la Gamba",
+    "town": "Dénia",
+    "region": "Marina Alta",
+    "date": "2024-07-20",
+    "product": "Gamba"
+  },
+  {
+    "name": "Fira de l'All",
+    "town": "Banyoles",
+    "region": "Pla de l'Estany",
+    "date": "2024-07-27",
+    "product": "All"
+  },
+  {
+    "name": "Fira de la Ratafia",
+    "town": "Santa Coloma de Farners",
+    "region": "Selva",
+    "date": "2024-08-10",
+    "product": "Ratafia"
+  },
+  {
+    "name": "Fira del Teatre al Carrer",
+    "town": "Tàrrega",
+    "region": "Urgell",
+    "date": "2024-09-05",
+    "product": "Teatre"
+  },
+  {
+    "name": "Fira del Torró i la Xocolata a la Pedra",
+    "town": "Agramunt",
+    "region": "Urgell",
+    "date": "2024-10-12",
+    "product": "Torró i xocolata"
+  },
+  {
+    "name": "Fira de la Castanya",
+    "town": "Viladrau",
+    "region": "Osona",
+    "date": "2024-10-26",
+    "product": "Castanyes"
+  },
+  {
+    "name": "Fira de Sant Andreu",
+    "town": "Manresa",
+    "region": "Bages",
+    "date": "2024-11-30",
+    "product": "Productes artesans"
+  },
+  {
+    "name": "Fira de l'Avet",
+    "town": "Espinelves",
+    "region": "Osona",
+    "date": "2024-12-06",
+    "product": "Avets de Nadal"
+  },
+  {
+    "name": "Fira de Santa Llúcia",
+    "town": "Barcelona",
+    "region": "Barcelonès",
+    "date": "2024-12-13",
+    "product": "Figures de pessebre i artesania"
+  }
+]

@@ -1,0 +1,26 @@
+<div *ngIf="selectedRegion">
+  <h2>Fires a {{ selectedRegion }}</h2>
+  <ul>
+    <li *ngFor="let fair of paginatedFairs">
+      <h3>{{ fair.name }}</h3>
+      <p><strong>Població:</strong> {{ fair.town }}</p>
+      <p><strong>Data:</strong> {{ fair.date | date:'dd/MM/yyyy' }}</p>
+      <p><strong>Producte:</strong> {{ fair.product }}</p>
+      <button 
+        (click)="toggleFavorite(fair)" 
+        [disabled]="isFavorite(fair)"
+        [class.added]="isFavorite(fair)">
+        {{ isFavorite(fair) ? 'Afegida a preferits' : 'Afegir a preferits' }}
+      </button>
+    </li>
+  </ul>
+  
+  <!-- Custom pagination controls -->
+  <div class="pagination-controls" *ngIf="totalPages > 1">
+    <button [disabled]="p === 1" (click)="changePage(1)">Primera</button>
+    <button [disabled]="p === 1" (click)="changePage(p - 1)">Anterior</button>
+    <span class="page-info">Pàgina {{ p }} de {{ totalPages }}</span>
+    <button [disabled]="p === totalPages" (click)="changePage(p + 1)">Següent</button>
+    <button [disabled]="p === totalPages" (click)="changePage(totalPages)">Última</button>
+  </div>
+</div>

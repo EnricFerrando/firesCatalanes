@@ -1,0 +1,20 @@
+<h2>Comarques</h2>
+
+<div class="search-container">
+  <i class="search-icon"></i>
+  <input 
+    type="text" 
+    placeholder="Cerca per nom de fira..." 
+    (input)="onSearchChange($event)"
+    aria-label="Cercador de fires">
+</div>
+
+<ul *ngIf="filteredRegions.length > 0; else noResults">
+  <li *ngFor="let region of filteredRegions" [routerLink]="['/fairs', region]">
+    {{ region }}
+  </li>
+</ul>
+
+<ng-template #noResults>
+  <p class="empty-message">No s'ha trobat cap comarca que contingui una fira amb aquest nom.</p>
+</ng-template>
