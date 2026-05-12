@@ -1,11 +1,11 @@
 <h2>Fires Preferides</h2>
 <ul *ngIf="favorites.length > 0; else noFavorites">
-  <li *ngFor="let fair of favorites">
+  <li *ngFor="let fair of favorites" (click)="goToDetails(fair)" class="favorite-card-clickable">
     <h3>{{ fair.name }}</h3>
     <p><strong>Població:</strong> {{ fair.town }}</p>
     <p><strong>Data:</strong> {{ fair.date | date:'dd/MM/yyyy' }}</p>
     <p><strong>Producte:</strong> {{ fair.product }}</p>
-    <button class="remove" (click)="removeFromFavorites(fair)">Eliminar de preferits</button>
+    <button class="remove" (click)="$event.stopPropagation(); removeFromFavorites(fair)">Eliminar de preferits</button>
   </li>
 </ul>
 <ng-template #noFavorites>

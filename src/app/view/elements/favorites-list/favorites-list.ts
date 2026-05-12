@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { Fair } from '../../../interface/fair';
 import { FiraService } from '../../../model/fira.service';
 
@@ -13,7 +14,7 @@ import { FiraService } from '../../../model/fira.service';
 export class FavoritesListComponent implements OnInit {
   favorites: Fair[] = [];
 
-  constructor(private firaService: FiraService) {}
+  constructor(private firaService: FiraService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadFavorites();
@@ -26,5 +27,9 @@ export class FavoritesListComponent implements OnInit {
   removeFromFavorites(fair: Fair): void {
     this.firaService.removeFromFavorites(fair);
     this.loadFavorites(); // Recarreguem la llista per actualitzar la vista
+  }
+
+  goToDetails(fair: Fair): void {
+    this.router.navigate(['/fairs', fair.region, encodeURIComponent(fair.name)]);
   }
 }
