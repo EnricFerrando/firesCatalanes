@@ -24,6 +24,10 @@ li {
   border: 2px solid transparent;
 }
 
+li.fair-card-clickable {
+  cursor: pointer;
+}
+
 li:hover {
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
   border-color: var(--secondary-color, #2ecc71);

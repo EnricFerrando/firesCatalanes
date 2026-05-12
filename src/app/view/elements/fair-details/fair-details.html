@@ -1,1 +1,117 @@
-<p>fair-details works!</p>
+<div class="details-container" *ngIf="!loading">
+  <button class="back-button" (click)="goBack()">← Tornar a les fires</button>
+  
+  <div class="fair-detail" *ngIf="fair">
+    <div class="detail-header">
+      <h2>{{ fair.name }}</h2>
+      <p class="location">{{ fair.town }}, {{ fair.region }}</p>
+    </div>
+
+    <div class="detail-content">
+      <!-- Basic Information -->
+      <section class="section">
+        <h3>Informació General</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <strong>📅 Data:</strong>
+            <span>{{ fair.date | date:'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="info-item">
+            <strong>🎯 Periodicitat:</strong>
+            <span>{{ fair.periodicityName || 'Anual' }}</span>
+          </div>
+          <div class="info-item">
+            <strong>🏭 Sector:</strong>
+            <span>{{ fair.sectorName }}</span>
+          </div>
+          <div class="info-item">
+            <strong>📍 Ubicació:</strong>
+            <span>{{ fair.location }}</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section class="section">
+        <h3>Productes i Serveis</h3>
+        <p class="products">{{ fair.product }}</p>
+      </section>
+
+      <!-- Organizer Information -->
+      <section class="section" *ngIf="fair.organizerName">
+        <h3>Informació de l'Organitzador</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <strong>🏢 Organitzador:</strong>
+            <span>{{ fair.organizerName }}</span>
+          </div>
+          <div class="info-item" *ngIf="fair.organizerAddress">
+            <strong>📬 Adreça:</strong>
+            <span>{{ fair.organizerAddress }}</span>
+          </div>
+          <div class="info-item" *ngIf="fair.organizerPhone">
+            <strong>📞 Telèfon:</strong>
+            <span>{{ fair.organizerPhone }}</span>
+          </div>
+          <div class="info-item" *ngIf="fair.organizerFax">
+            <strong>📠 Fax:</strong>
+            <span>{{ fair.organizerFax }}</span>
+          </div>
+          <div class="info-item" *ngIf="fair.email">
+            <strong>✉️ Email:</strong>
+            <span>
+              <a [href]="'mailto:' + fair.email" target="_blank">{{ fair.email }}</a>
+            </span>
+          </div>
+          <div class="info-item" *ngIf="fair.web">
+            <strong>🌐 Web:</strong>
+            <span>
+              <a [href]="fair.web" target="_blank" rel="noopener noreferrer">{{ fair.web }}</a>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statistics -->
+      <section class="section" *ngIf="fair.firstYear || fair.nexhibitors || fair.nvisitors || fair.surface">
+        <h3>Estadístiques</h3>
+        <div class="info-grid">
+          <div class="info-item" *ngIf="fair.firstYear">
+            <strong>📜 Primera Edició:</strong>
+            <span>{{ fair.firstYear }}</span>
+          </div>
+          <div class="info-item" *ngIf="fair.nexhibitors">
+            <strong>🏪 Exhibidors:</strong>
+            <span>{{ fair.nexhibitors }}</span>
+          </div>
+          <div class="info-item" *ngIf="fair.nvisitors">
+            <strong>👥 Visitants:</strong>
+            <span>{{ fair.nvisitors }}</span>
+          </div>
+          <div class="info-item" *ngIf="fair.surface">
+            <strong>📐 Superfície (m²):</strong>
+            <span>{{ fair.surface }}</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button 
+        class="favorite-button" 
+        (click)="toggleFavorite()"
+        [class.active]="isFavoritedItem">
+        {{ isFavoritedItem ? '❤️ Afegida a preferits' : '🤍 Afegir a preferits' }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="!fair && !loading" class="not-found">
+    <p>Fira no trobada</p>
+  </div>
+</div>
+
+<div class="loading" *ngIf="loading">
+  <p>Carregant detalls...</p>
+</div>

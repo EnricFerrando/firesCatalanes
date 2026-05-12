@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Fair } from '../../../interface/fair';
 import { FiraService } from '../../../model/fira.service';
 
@@ -19,7 +19,12 @@ export class FairListComponent implements OnInit {
   p: number = 1;
   itemsPerPage: number = 10;
 
-  constructor(private route: ActivatedRoute, private firaService: FiraService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private route: ActivatedRoute, 
+    private router: Router,
+    private firaService: FiraService, 
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -74,5 +79,9 @@ export class FairListComponent implements OnInit {
       this.firaService.addToFavorites(fair);
       this.loadFavorites(); // Recarreguem per actualitzar l'estat del botó
     }
+  }
+
+  goToDetails(fair: Fair): void {
+    this.router.navigate(['/fairs', this.selectedRegion, encodeURIComponent(fair.name)]);
   }
 }

@@ -1,13 +1,13 @@
 <div *ngIf="selectedRegion">
   <h2>Fires a {{ selectedRegion }}</h2>
   <ul>
-    <li *ngFor="let fair of paginatedFairs">
+    <li *ngFor="let fair of paginatedFairs" (click)="goToDetails(fair)" class="fair-card-clickable">
       <h3>{{ fair.name }}</h3>
       <p><strong>Població:</strong> {{ fair.town }}</p>
       <p><strong>Data:</strong> {{ fair.date | date:'dd/MM/yyyy' }}</p>
       <p><strong>Producte:</strong> {{ fair.product }}</p>
       <button 
-        (click)="toggleFavorite(fair)" 
+        (click)="$event.stopPropagation(); toggleFavorite(fair)" 
         [disabled]="isFavorite(fair)"
         [class.added]="isFavorite(fair)">
         {{ isFavorite(fair) ? 'Afegida a preferits' : 'Afegir a preferits' }}

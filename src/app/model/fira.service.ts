@@ -20,13 +20,26 @@ export class FiraService {
 
   constructor(private http: HttpClient) { }
 
-  private transformRawData(rawFairs: RawFair[]): Fair[] {
+  private transformRawData(rawFairs: any[]): Fair[] {
     return rawFairs.map(raw => ({
       name: raw.activityName || 'Unknown',
       town: raw.municipalityName || 'Unknown',
       region: raw.regionName || 'Unknown',
       date: this.parseDate(raw.date),
-      product: raw.products || 'Unknown'
+      product: raw.products || 'Unknown',
+      organizerName: raw.organizerName || '',
+      organizerAddress: raw.organizerAddress || '',
+      organizerPhone: raw.organizerPhone || '',
+      organizerFax: raw.organizerFax || '',
+      email: raw.email || '',
+      web: raw.web || '',
+      periodicityName: raw.periodicityName || '',
+      sectorName: raw.sectorName || '',
+      location: raw.location || '',
+      firstYear: raw.firstYear || '',
+      nexhibitors: raw.nexhibitors,
+      nvisitors: raw.nvisitors,
+      surface: raw.surface
     }));
   }
 

@@ -1,39 +1,105 @@
 header {
   background-color: var(--header-footer-bg, #2c3e50);
   color: white;
-  padding: 15px 30px;
+  padding: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  padding: 15px 30px;
 }
 
 h1 {
   margin: 0;
   font-size: 1.8rem;
   font-weight: 700;
+  flex-shrink: 0;
 }
 
-nav a {
+h1 a {
   color: white;
   text-decoration: none;
-  margin: 0 10px;
-  padding: 8px 12px;
-  border-radius: 5px;
+  transition: color 0.3s ease;
+}
+
+h1 a:hover {
+  color: var(--primary-color, #3498db);
+}
+
+.navbar {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 4px;
   font-size: 1rem;
   font-weight: 500;
-  position: relative;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  display: inline-block;
+  white-space: nowrap;
 }
 
-/* Style for the active route link */
-nav a.active {
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--primary-color, #3498db);
+}
+
+.nav-link.active {
   background-color: var(--primary-color, #3498db);
   color: white;
-  font-weight: bold;
+  font-weight: 600;
+  border-bottom: 3px solid var(--secondary-color, #2ecc71);
 }
 
-/* Hover effect for non-active links */
-nav a:not(.active):hover {
-  background-color: rgba(255, 255, 255, 0.1);
+/* Responsive design */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 20px;
+  }
+  
+  h1 {
+    font-size: 1.4rem;
+  }
+  
+  .navbar {
+    width: 100%;
+    justify-content: center;
+    gap: 0;
+  }
+  
+  .nav-link {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    flex: 1;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 10px 15px;
+  }
+  
+  h1 {
+    font-size: 1.2rem;
+  }
+  
+  .nav-link {
+    padding: 7px 10px;
+    font-size: 0.9rem;
+  }
 }

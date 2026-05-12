@@ -1,4 +1,19 @@
-<h1><a routerLink="/regions">Fires de Catalunya</a></h1>
-<nav>
-  <a routerLink="/favorites">Preferides</a>
-</nav>
+<div class="header-container">
+  <h1><a routerLink="/regions">Fires de Catalunya</a></h1>
+  <nav class="navbar">
+    <a 
+      routerLink="/regions" 
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="nav-link">
+      Fires per Comarca
+    </a>
+    <a 
+      routerLink="/favorites" 
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="nav-link">
+      Preferides
+    </a>
+  </nav>
+</div>
