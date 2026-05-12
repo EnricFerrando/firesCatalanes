@@ -4,6 +4,14 @@ import { firstValueFrom } from 'rxjs';
 import { Fair } from '../interface/fair';
 import { FAIRS } from './fairs';
 
+interface RawFair {
+  activityName: string;
+  municipalityName: string;
+  regionName: string;
+  date: string;
+  products: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +19,41 @@ export class FiraService {
   private firesCache: Fair[] | null = null;
 
   constructor(private http: HttpClient) { }
+
+  private transformRawData(rawFairs: RawFair[]): Fair[] {
+    return rawFairs.map(raw => ({
+      name: raw.activityName || 'Unknown',
+      town: raw.municipalityName || 'Unknown',
+      region: raw.regionName || 'Unknown',
+      date: this.parseDate(raw.date),
+      product: raw.products || 'Unknown'
+    }));
+  }
+
+  private parseDate(dateStr: string): string {
+    if (!dateStr) return '';
+    
+    // Handle format like "29 Novembre 2025" or "2 - 4 Maig 2025"
+    const months: { [key: string]: string } = {
+      'gener': '01', 'febrer': '02', 'març': '03', 'abril': '04',
+      'maig': '05', 'juny': '06', 'juliol': '07', 'agost': '08',
+      'setembre': '09', 'octubre': '10', 'novembre': '11', 'desembre': '12'
+    };
+
+    // Try to extract day, month, year from the text format
+    const regex = /(\d{1,2})\s+(\w+)\s+(\d{4})/;
+    const match = dateStr.match(regex);
+    
+    if (match) {
+      const day = match[1].padStart(2, '0');
+      const monthName = match[2].toLowerCase();
+      const year = match[3];
+      const month = months[monthName] || '01';
+      return `${year}-${month}-${day}`;
+    }
+
+    return dateStr;
+  }
 
   getFires(): Fair[] {
     // Return cached data if available
@@ -28,9 +71,10 @@ export class FiraService {
     }
 
     try {
-      const data = await firstValueFrom(this.http.get<Fair[]>('assets/fairs.json'));
-      this.firesCache = data;
-      return data;
+      const rawData = await firstValueFrom(this.http.get<RawFair[]>('assets/fairs.json'));
+      const transformedData = this.transformRawData(rawData);
+      this.firesCache = transformedData;
+      return transformedData;
     } catch (err) {
       console.warn('Failed to load fairs.json, using fallback data', err);
       this.firesCache = FAIRS;
